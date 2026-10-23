@@ -29,6 +29,7 @@ void uart_print_hex(uint8_t value) {
 
 void print_hex_value(char c) {
 	const char hex[] = "0123456789ABCDEF";
-	uart_tx(hex[c >> 4]);               // high nibble
-	uart_tx(hex[c & 0x0F]);             // low nibble
+	unsigned char u = (unsigned char)c;
+	uart_tx(hex[u >> 4]);               // high nibble
+	uart_tx(hex[u & 0x0F]);             // low nibble
 }
