@@ -49,6 +49,12 @@ void print_measure(void) {
 	The largest product is about 1 million × 125 = 131 million, so it fits, and humidity is never negative, so it stays unsigned.
 	*/
 
+	/*
+	Display precision, from the AHT20 datasheet:
+	Temperature: resolution 0.01 °C, accuracy ±0.3 °C -> 2 decimals (23.05 °C).
+	Humidity: resolution 0.024 %RH, accuracy ±2 %RH -> 1 decimal (48.3 %).
+	A 2nd humidity decimal would be below the sensor resolution, so it would be noise.
+	*/
     uart_print_str("Temperature: ");
     if (temp < 0) {
         uart_tx('-');
